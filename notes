@@ -1,0 +1,87 @@
+Our canvas is 400px
+The drawings made in the web-app data creator are downloaded
+The  drawings data file are downloaded into the downloaded folder of My PC in txt file.
+From there you have to copy them and paste them in raw folder in the data folder.
+Then you will need to run command node dataset_generator.js.
+Then the data from raw data will go into the samples.json file in JSON format.
+This samples.json file will conatin the name , id , label(drawing name),student_id.
+The json folder in the dataset folder will conatin all the paths needed to make the drawings.
+
+The js_objects is going to contain files we use to communicate between our node scripts and the web apps we made.
+
+The feature_extractor.js command with node will make a feature.json file in the dataset in the data directory.
+
+
+The handleClick function will take the image from the point chart and then emphasize the drawing in the viewer table.
+If you want to blur a person drawings add his session id in the flagged array in utils.js
+
+The first number is the path count and the 2nd one is point count in the point array inside the onDrawingUpadte function in viewer.html
+
+
+The command node dataset_generator will extract the the txt files (in which the data about each drawing is present ) in JSON format.
+The command node feature_extractor will extract the features of eachsample from the js_objects file.
+
+
+
+We divide the dataset into 2 segments training data & testing data.
+
+The green colored labels in the testing data are the one that were identified correctly by the model .
+
+The decision boundary/the color separation represents all the drawings through k-nearest neighbour.
+
+Same type of drawings were grouped together through k-nearest neighbour and each color represents them.
+
+In simple words,the colored difference tells us that:
+1.This path was used the most frequent number of times to make that certain drawings.
+2.The model predicts the answer depending upon the movement of the drawing in the drawing chart correspondent to the the colored difference in the height & width chart
+
+for eaxmple  clock are generally round and in this case most drawings of the clock start at the center so if in the drawing chart you draw lines in the center most probably the model will predict clock because in the height&width(colored chart)the light grey color (which represents clock) is in the center.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React , {useState} from "react";
+
+function App(){
+
+const[list,setList]=useState([])
+const [input,setInput]=useState("");
+
+  return(
+    <div>
+      <h1>todo list</h1>
+      <input type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
+      <button>Add</button>
+    </div>
+  )
+  
+}
+
+export default App
